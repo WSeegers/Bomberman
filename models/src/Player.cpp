@@ -20,8 +20,7 @@ const sf::Vector2i TEST_NEIGHBOURS[8] = {
 };
 
 Player::Player() : _position(DEFAULT_START),
-				   _playerSpeed(DEFAULT_SPEED),
-				   moveState({false, false, false, false})
+				   _playerSpeed(DEFAULT_SPEED)
 {
 }
 
@@ -102,8 +101,7 @@ void Player::move(float deltaTime, const Map &map)
 	for (sf::Vector2i direction : TEST_NEIGHBOURS)
 	{
 		sf::Vector2i cell = playerCell + direction;
-		Tile tile = map.tileAt(cell);
-		if (!(tile == Tile::Clear || tile == Tile::Bomb))
+		if (map.tileAt(cell) != Tile::Clear)
 		{
 			if (correctPlayerCellCollision(cell))
 				break;
