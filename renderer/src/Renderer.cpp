@@ -71,28 +71,19 @@ void Renderer::map(sf::Window &window, const GameState &state)
 	const Map &map = state.map;
 	const sf::Vector2i &mapSize = map.size();
 	Tile tile;
-	for (int y = 0; y < mapSize.y; y++)
-	{
-		for (int x = 0; x < mapSize.x; x++)
-		{
-			sf::Vector2i cellPosition(x, y);
-			tile = map.tileAt(cellPosition);
-			if (tile != Tile::Clear)
-			{
-        glm::mat4 model = glm::mat4(1.0f);
-        modelNames name;
-
-				switch (tile)
-				{
-				case Tile::Solid:
+	sf::RectangleShape cell(sf::Vector2f(SCALE, SCALE));
+	sf::CircleShape bomb(SCALE / 2);
+	cell.setFillColor(sf::Color(250));
           name = unbreakableModel;
 					break;
 				case Tile::Destructible:
 					name = breakableModel;
+					cell.setFillColor(sf::Color(50, 150, 20));
+					window.draw(cell);
 					break;
-				default:
-					break;
-				}
+				case Tile::Destructible:
+					cell.setFillColor(sf::Color(50, 50, 150));
+					window.draw(cell);
         model = glm::translate(model, _models[name].initialPos + glm::vec3(cellPosition.x, 0.0f, cellPosition.y));
         model = glm::scale(model, _models[name].initialScale);
         model = glm::rotate(model, glm::radians(_models[name].initialRot.w), glm::vec3(_models[name].initialRot));
