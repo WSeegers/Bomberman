@@ -13,7 +13,7 @@ Input::Input() : _pause(Key::Escape)
 
 Input::~Input() {}
 
-InputResponse Input::parseKeys(std::vector<EngineEvent> &engineEvents, sf::RenderWindow &window)
+InputResponse Input::parseKeys(std::vector<EngineEvent> &engineEvents, sf::Window &window)
 {
 	sf::Event event;
 	EngineEvent eEvent = EngineEvent::unknown;

@@ -4,7 +4,9 @@
 #include <EngineEvent.hpp>
 
 #include <SFML/Window/Event.hpp>
-#include <SFML/Graphics.hpp>
+//#include <SFML/Graphics.hpp>
+#include <SFML/Window.hpp>
+#include <vector>
 
 #include <cereal/archives/binary.hpp>
 #include <cereal/types/map.hpp>
@@ -40,7 +42,7 @@ public:
 		ar(this->keyMap);
 	}
 
-	InputResponse parseKeys(std::vector<EngineEvent> &engineEvents, sf::RenderWindow &window);
+	InputResponse parseKeys(std::vector<EngineEvent> &engineEvents, sf::Window &window);
 
 	void saveConfig() const;
 	void loadConfig();

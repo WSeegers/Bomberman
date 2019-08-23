@@ -7,11 +7,26 @@
 const int MAP_WIDTH = 11;
 const int MAP_HEIGHT = 11;
 
+static const uint WINDOW_WIDTH = 800;
+static const uint WINDOW_HEIGHT = 800;
+static const char *WINDOW_TITLE = "Bomberman";
+
+const int depthBits = 32;
+const int majorVersion = 3;
+const int minorVersion = 3;
+const int antialiasingLevel = 4;
+const int attributeFlags = sf::ContextSettings::Core;
+sf::ContextSettings settings(depthBits, majorVersion, antialiasingLevel, attributeFlags);
+
 Bomberman::Bomberman()
-	: window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), WINDOW_TITLE),
+	: window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), WINDOW_TITLE, sf::Style::Titlebar, settings),
 	  renderTime(0),
 	  engineTime(0)
 {
+
+	window.setActive();
+	renderer.init();
+
 	this->deltaClock.restart();
 	this->frameClock.restart();
 }
@@ -35,7 +50,7 @@ void Bomberman::updateFunc()
 	InputResponse response = this->input.parseKeys(actions, this->window);
 	switch (response)
 	{
-	case InputResponse::quit:	
+	case InputResponse::quit:
 		this->stop();
 		break;
 	case InputResponse::pause:

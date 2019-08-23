@@ -37,3 +37,28 @@ SFML will need to be build for the current system
 ### Running the Game
 
 ```./{BOMBERMAN_ROOT}/build/bin/bomberman```
+
+## Dependancies
+* CMake
+* pkg-config
+* SFML
+* GLEW
+* GLM
+* ASSIMP
+
+### MacOS dependancy installation
+    brew install cmake
+    brew install pkg-config
+    brew install sfml
+    brew install glew
+    brew install glm
+    brew install assimp
+
+### Linux dependancy installation
+    sudo apt-get install cmake
+    sudo apt-get install pkg-config
+    sudo apt-get libsfml-dev
+    sudo apt-get libglew-dev
+    sudo apt-get libglm-dev
+    sudo apt-get libassimp-dev
+
