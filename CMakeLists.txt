@@ -6,6 +6,10 @@ set(CMAKE_CXX_STANDARD 17)
 include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
 conan_basic_setup()
 
+link_libraries(
+    ${CONAN_LIBS}    
+)
+
 include_directories(
     engine/include
     renderer/include
