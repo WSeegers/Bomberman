@@ -22,21 +22,11 @@ This will add the repo where sfml lives.
 
 ### Install
 
-```cd {BOMBERMAN_ROOT}```
-
-```mkdir build && cd build```
-
-SFML will need to be build for the current system
-```conan install .. --build sfml```
-
-```cmake ..```
-
 ```make```
-
 
 ### Running the Game
 
-```./{BOMBERMAN_ROOT}/build/bin/bomberman```
+```make run```
 
 ## Dependancies
 * CMake
@@ -61,4 +51,3 @@ SFML will need to be build for the current system
     sudo apt-get libglew-dev
     sudo apt-get libglm-dev
     sudo apt-get libassimp-dev
-
