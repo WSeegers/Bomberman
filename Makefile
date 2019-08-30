@@ -8,12 +8,14 @@ BUILD_PATH := $(TOP)/build
 
 OS := $(shell uname)
 
-CONAN_PROFILE := $(if ifeq  $(OS) "linux",linux.profile,mac.profile)
+CONAN_PROFILE := $(if $(filter $(OS), "linux"),linux.profile,mac.profile)
 
 all: install
 
 install:
 	@mkdir -p $(BUILD_PATH)
+	@echo "Adding bincrafters repo to conan"
+	@conan remote add bincrafters https://api.bintray.com/conan/bincrafters/public-conan
 	@cd $(BUILD_PATH) \
 		&& conan install .. --build=missing --profile ../$(CONAN_PROFILE) \
 		&& cmake .. \
